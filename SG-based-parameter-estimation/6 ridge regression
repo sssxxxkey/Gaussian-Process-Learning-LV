@@ -1,0 +1,75 @@
+lambda_list=[
+    0.1,1,5,10,50,100
+]
+
+
+best_lam=None
+best_error=np.inf
+
+
+for lam in lambda_list:
+
+    theta_x=np.linalg.solve(
+        Gx.T@Gx+lam*np.eye(2),
+        Gx.T@dx
+    )
+
+
+    theta_y=np.linalg.solve(
+        Gy.T@Gy+lam*np.eye(2),
+        Gy.T@dy
+    )
+
+
+    error=(
+        np.linalg.norm(theta_x-true_theta_x)
+        +
+        np.linalg.norm(theta_y-true_theta_y)
+    )
+
+
+    if error<best_error:
+        best_error=error
+        best_lam=lam
+
+
+
+print(
+    "Best lambda:",
+    best_lam
+)
+
+# final estimation
+
+theta_x=np.linalg.solve(
+    Gx.T@Gx+best_lam*np.eye(2),
+    Gx.T@dx
+)
+
+
+theta_y=np.linalg.solve(
+    Gy.T@Gy+best_lam*np.eye(2),
+    Gy.T@dy
+)
+print("\n===== LV Parameter Identification =====")
+
+print(
+    f"{'Parameter':<15}{'True':<10}{'Estimated':<12}{'Error'}"
+)
+
+print(
+    f"{'alpha':<15}{1.5:<10}{theta_x[0]:<12.4f}{abs(theta_x[0]-1.5):.4f}"
+)
+
+print(
+    f"{'beta':<15}{1.0:<10}{theta_x[1]:<12.4f}{abs(theta_x[1]-1):.4f}"
+)
+
+print(
+    f"{'delta':<15}{1.0:<10}{theta_y[0]:<12.4f}{abs(theta_y[0]-1):.4f}"
+)
+
+print(
+    f"{'gamma':<15}{3.0:<10}{theta_y[1]:<12.4f}{abs(theta_y[1]-3):.4f}"
+)
+
