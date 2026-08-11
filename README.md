@@ -82,6 +82,7 @@ Ridge regression
       ↓
 Estimate α, β, δ, γ
 
+
 # 3. Method II — Gaussian Process Learning (GPL)
 
 The second approach uses Gaussian Process Regression to reconstruct the underlying dynamics and estimate their derivatives from noisy observations.
