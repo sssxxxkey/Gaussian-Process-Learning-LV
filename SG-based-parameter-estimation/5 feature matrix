@@ -1,0 +1,28 @@
+# dx = alpha*x - beta*x*y
+
+Gx=np.column_stack(
+    [
+        x_smooth,
+        -x_smooth*y_smooth
+    ]
+)
+
+
+# dy = delta*x*y - gamma*y
+
+Gy=np.column_stack(
+    [
+        x_smooth*y_smooth,
+        -y_smooth
+    ]
+)
+
+
+
+true_theta_x=np.array(
+    [1.5,1.0]
+)
+
+true_theta_y=np.array(
+    [1.0,3.0]
+)
