@@ -1,0 +1,9 @@
+x_smooth,dx=sg_smooth_deriv(
+    t_train,
+    x_train
+)
+
+y_smooth,dy=sg_smooth_deriv(
+    t_train,
+    y_train
+)
