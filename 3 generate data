@@ -1,0 +1,67 @@
+true_param=[
+    1.5,
+    1.0,
+    1.0,
+    3.0
+]
+
+
+x_full,y_full,t_full=LV_model(
+    1,
+    1,
+    30,
+    0.01,
+    true_param
+)
+
+
+# training interval
+
+T_train_max=10
+
+mask=t_full<=T_train_max
+
+x_pool=x_full[mask]
+y_pool=y_full[mask]
+t_pool=t_full[mask]
+
+
+# noise
+
+NoisePer=0.1
+
+
+noise_x=np.random.normal(
+    0,
+    NoisePer*np.mean(abs(x_pool)),
+    len(x_pool)
+    )
+
+noise_y=np.random.normal(
+    0,
+    NoisePer*np.mean(abs(y_pool)),
+    len(y_pool)
+)
+
+
+x_noise=x_pool+noise_x
+y_noise=y_pool+noise_y
+
+
+
+# random sampling
+
+Num_data=200
+
+idx=np.sort(
+    np.random.choice(
+        len(x_pool),
+        Num_data,
+        replace=False
+    )
+)
+
+
+x_train=x_noise[idx]
+y_train=y_noise[idx]
+t_train=t_pool[idx]

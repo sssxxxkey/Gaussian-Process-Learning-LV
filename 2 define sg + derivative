@@ -1,0 +1,28 @@
+def sg_smooth_deriv(t,y,poly_order=3,window_ratio=0.1):
+
+    dt=np.mean(np.diff(t))
+
+    window=int(len(t)*window_ratio)
+
+    if window%2==0:
+        window+=1
+
+    if window<=poly_order:
+        window=poly_order+2
+
+    smooth=savgol_filter(
+        y,
+        window,
+        poly_order,
+        deriv=0
+    )
+
+    deriv=savgol_filter(
+        y,
+        window,
+        poly_order,
+        deriv=1,
+        delta=dt
+    )
+
+    return smooth,deriv
