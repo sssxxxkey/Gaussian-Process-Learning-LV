@@ -1,0 +1,89 @@
+
+fig,ax=plt.subplots(
+    2,2,
+    figsize=(12,8)
+)
+
+
+ax[0,0].scatter(
+    t_train,
+    x_train,
+    s=10,
+    label="noise"
+)
+
+ax[0,0].plot(
+    t_train,
+    x_smooth,
+    label="SG smooth"
+)
+
+ax[0,0].set_title("x(t)")
+ax[0,0].legend()
+
+
+ax[0,1].plot(
+    t_train,
+    dx
+)
+
+ax[0,1].set_title("dx/dt")
+
+
+ax[1,0].scatter(
+    t_train,
+    y_train,
+    s=10,
+    label="noise"
+)
+
+ax[1,0].plot(
+    t_train,
+    y_smooth,
+    label="SG smooth"
+)
+
+ax[1,0].set_title("y(t)")
+ax[1,0].legend()
+
+
+ax[1,1].plot(
+    t_train,
+    dy
+)
+
+ax[1,1].set_title("dy/dt")
+
+
+plt.tight_layout()
+plt.show()
+
+# ===============================
+# 9. Full trajectory
+# ===============================
+
+plt.figure(figsize=(10,4))
+
+plt.plot(
+    t_full,
+    x_full,
+    label="prey x"
+)
+
+plt.plot(
+    t_full,
+    y_full,
+    label="predator y"
+)
+
+
+plt.axvline(
+    T_train_max,
+    linestyle="--",
+    label="train/test split"
+)
+
+plt.legend()
+plt.title("Lotka-Volterra trajectory")
+plt.xlabel("t")
+plt.show()
