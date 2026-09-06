@@ -4,6 +4,10 @@ This repository contains implementations for parameter estimation of nonlinear d
 
 The current study focuses on the Lotka-Volterra system and investigates different approaches for derivative estimation and parameter identification.
 
+## Research Poster
+
+![Research Poster](research-poster.png)
+
 ## Project Overview
 
 The current project includes two approaches:
