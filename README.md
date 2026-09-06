@@ -6,7 +6,7 @@ The current study focuses on the Lotka-Volterra system and investigates differen
 
 ## Research Poster
 
-![Research Poster](research-poster.png)
+![Research Poster](2.png)
 
 ## Project Overview
 
